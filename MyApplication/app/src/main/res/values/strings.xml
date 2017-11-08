@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="button_text">Press me</string>
+    <string name="give_me_your_text">insert text here</string>
+    <string name="get_text">GET TEXT </string>
+    <string name="color_switcher">color switcher </string>
+</resources>

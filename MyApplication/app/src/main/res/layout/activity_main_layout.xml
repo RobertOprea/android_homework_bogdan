@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/regular_text_size"
+        android:text="@string/hello_world"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/myText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:text="This is my text !"
+        android:gravity="center"
+        android:layout_below="@+id/hello"/>
+
+    <EditText
+        android:id="@+id/textEditor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/give_me_your_text"
+        android:gravity="center"
+        android:layout_below="@+id/myText"
+        android:paddingTop="15dp"
+        />
+
+    <Button
+        android:id="@+id/getTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_text"
+        android:layout_below="@+id/textEditor"
+        android:layout_centerHorizontal="true"/>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/colorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color_switcher"
+        android:layout_below="@+id/getTextButton"
+        android:layout_centerHorizontal="true"/>
+
+
+
+    <ImageView
+        android:src="@mipmap/ic_looks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+
+</RelativeLayout>
