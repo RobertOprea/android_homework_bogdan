@@ -24,18 +24,19 @@ import java.util.Random;
 
 public class MainActivity extends SupportActivity {
 
-    private Button button, getButton,colorButton;
+    private Button button, getButton, colorButton;
     private TextView textView;
     private EditText editText;
-    private RelativeLayout layout;
-    int red, green , blue;
+    private RelativeLayout rootlayout;
+    private  int red ,green,blue;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
 
-        layout = (RelativeLayout) findViewById(R.id.layout);
+
+        rootlayout = (RelativeLayout) findViewById(R.id.layout);
 
         button = (Button)findViewById(R.id.button);
         getButton = (Button)findViewById(R.id.getTextButton);
@@ -44,6 +45,7 @@ public class MainActivity extends SupportActivity {
         textView = (TextView)findViewById(R.id.myText) ;
         editText = (EditText)findViewById(R.id.textEditor) ;
 
+        getButton.setEnabled(true);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +66,7 @@ public class MainActivity extends SupportActivity {
         colorButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Random randomColor = new Random();
-                red= randomColor.nextInt(256);
-                green = randomColor.nextInt(256);
-                blue = randomColor.nextInt(256);
-                layout.setBackgroundColor(Color.argb(255,red,green,blue));
-
+                setRandomColor();
 
             }
         });
@@ -79,22 +76,23 @@ public class MainActivity extends SupportActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Random randomColor = new Random();
-        red= randomColor.nextInt(256);
-        green = randomColor.nextInt(256);
-        blue = randomColor.nextInt(256);
-        layout.setBackgroundColor(Color.argb(255,red,green,blue));
+        setRandomColor();
         getButton.setEnabled(false);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        setRandomColor();
+        getButton.setEnabled(true);
+
+    }
+
+    public void setRandomColor(){
         Random randomColor = new Random();
         red= randomColor.nextInt(256);
         green = randomColor.nextInt(256);
         blue = randomColor.nextInt(256);
-        layout.setBackgroundColor(Color.argb(255,red,green,blue));
-
+        rootlayout.setBackgroundColor(Color.argb(255,red,green,blue));
     }
 }
