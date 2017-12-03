@@ -19,6 +19,7 @@ public class MyService extends Service {
         Log.e("TAGG","Service created");
         Intent intent = new Intent();
         intent.setAction("com.courses.EXAMPLE");
+        intent.putExtra("fragmentActivity","text for fragment and activity");
         sendBroadcast(intent);
         stopSelf();
     }

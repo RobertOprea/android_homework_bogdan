@@ -1,5 +1,7 @@
 package com.courses.bogdan.myapplication.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,7 +20,6 @@ import android.widget.Toast;
 
 import com.courses.bogdan.myapplication.R;
 import com.courses.bogdan.myapplication.fragments.MainFragment;
-import com.courses.bogdan.myapplication.receivers.MyReceiver;
 import com.courses.bogdan.myapplication.services.MyService;
 
 import java.util.Random;
@@ -33,18 +34,17 @@ public class MainActivity extends FragmentActivity {
     private TextView myView;
     private EditText textEditor;
     private RelativeLayout mainlayout;
-    private int red, green, blue; /// rgb colors
     private Intent intent;
     private FrameLayout frameLayout;
     private static final int MAX_COLOR_VALUE = 256;
-    private static MainActivity ins;
+    private Random randomColor = new Random();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
 
-        ins = this;
+
 
         mainlayout = (RelativeLayout) findViewById(R.id.layout);
         frameLayout = (FrameLayout) findViewById(R.id.main_frame_layout);
@@ -77,11 +77,8 @@ public class MainActivity extends FragmentActivity {
         colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Random randomColor = new Random();
-                red = randomColor.nextInt(MAX_COLOR_VALUE);
-                green = randomColor.nextInt(MAX_COLOR_VALUE);
-                blue = randomColor.nextInt(MAX_COLOR_VALUE);
-                mainlayout.setBackgroundColor(Color.argb(MAX_COLOR_VALUE - 1, red, green, blue));
+
+                mainlayout.setBackgroundColor(Color.argb(MAX_COLOR_VALUE - 1, randomColor.nextInt(MAX_COLOR_VALUE),randomColor.nextInt(MAX_COLOR_VALUE),randomColor.nextInt(MAX_COLOR_VALUE)));
 
 
             }
@@ -89,23 +86,15 @@ public class MainActivity extends FragmentActivity {
 
         setupFragment();
 
-        View.OnClickListener listnr=new View.OnClickListener() {
 
+        fragmentButon.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, MyReceiver.class);
                 intent.setAction("com.example.demo.action.info");
                 sendBroadcast(intent);
-
-
             }
-
-        };
-
-
-        fragmentButon.setOnClickListener(listnr);
+        });
 
 
     }
@@ -120,17 +109,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Random randomColor = new Random();
-        red = randomColor.nextInt(256);
-        green = randomColor.nextInt(256);
-        blue = randomColor.nextInt(256);
-        mainlayout.setBackgroundColor(Color.argb(255, red, green, blue));
-        getButton.setEnabled(false);
-    }
-
-
-    public static MainActivity getInstace() {
-        return ins;
+        mainlayout.setBackgroundColor(Color.argb(MAX_COLOR_VALUE-1, randomColor.nextInt(MAX_COLOR_VALUE),randomColor.nextInt(MAX_COLOR_VALUE),randomColor.nextInt(MAX_COLOR_VALUE)));
     }
 
 
@@ -143,5 +122,19 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
+
+    public class MyReceiver extends BroadcastReceiver {
+
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                updateTheTextView("Fragment button pressed");
+                String getString = String.valueOf(intent.getExtras().get("fragmentActivity"));
+            } catch (Exception e) {
+
+            }
+        }
+    }
 
 }
