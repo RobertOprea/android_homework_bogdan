@@ -11,7 +11,8 @@
         android:layout_gravity="center"
         android:textSize="30sp"
         android:text="This is my fragment"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:id="@+id/fragmentView"/>
 
     <Button
         android:layout_width="wrap_content"

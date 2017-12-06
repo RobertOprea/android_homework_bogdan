@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity {
         toastButton = (Button) findViewById(R.id.toastButton);
         getButton = (Button) findViewById(R.id.getTextButton);
         colorButton = (Button) findViewById(R.id.colorButton);
-        fragmentButon = (Button) findViewById(R.id.myFragmentButton);
+        fragmentButon = (Button) findViewById(R.id.fragmentGo);
 
         myView = (TextView) findViewById(R.id.myText);
         textEditor = (EditText) findViewById(R.id.textEditor);
@@ -90,7 +90,7 @@ public class MainActivity extends FragmentActivity {
         fragmentButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MyReceiver.class);
+                Intent intent = new Intent(MainActivity.this, MainFragment.MyReceiverFragment.class);
                 intent.setAction("com.example.demo.action.info");
                 sendBroadcast(intent);
             }
@@ -130,7 +130,7 @@ public class MainActivity extends FragmentActivity {
         public void onReceive(Context context, Intent intent) {
             try {
                 updateTheTextView("Fragment button pressed");
-                String getString = String.valueOf(intent.getExtras().get("fragmentActivity"));
+                //String getString = String.valueOf(intent.getExtras().get("fragmentActivity"));
             } catch (Exception e) {
 
             }

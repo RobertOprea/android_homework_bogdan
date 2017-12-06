@@ -21,6 +21,8 @@ public class MyService extends Service {
         intent.setAction("com.courses.EXAMPLE");
         intent.putExtra("fragmentActivity","text for fragment and activity");
         sendBroadcast(intent);
+        intent.setAction("com.courses.EXAMPLEFragment");
+        sendBroadcast(intent);
         stopSelf();
     }
 
