@@ -16,8 +16,8 @@ import java.security.AccessController;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Intent intent, intent2;
-    private Button secondActivity, thirdActivity;
+    private Intent intent, intent2, intent3;
+    private Button secondActivity, thirdActivity,maps;
     private ObjectToSend obj;
 
     @Override
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         secondActivity = (Button) findViewById(R.id.activityChanger);
         thirdActivity = (Button) findViewById(R.id.thirdActivity);
-
+        maps = (Button) findViewById(R.id.mapsActivity);
 
         intent = new Intent(getApplicationContext(),SecondActivity.class);
         obj = new ObjectToSend("George","Georgel",30,"turzii");
@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        intent3 = new Intent(getApplicationContext(),MapsActivity.class);
+        maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent3.putExtra("lat", 44);
+                intent3.putExtra("lgn", 25);
+                startActivity(intent3);
+            }
+        });
     }
 
     @Override
