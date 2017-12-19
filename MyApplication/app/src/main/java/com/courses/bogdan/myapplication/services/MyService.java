@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.LinearLayout;
 
+import com.courses.bogdan.myapplication.constants.IntentActionConstants;
+
 /**
  * Created by Bogdan on 11/9/2017.
  */
@@ -16,12 +18,11 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e("TAGG","Service created");
         Intent intent = new Intent();
-        intent.setAction("com.courses.EXAMPLE");
+        intent.setAction(IntentActionConstants.ACTIVITY_INFO_INTENT);
         intent.putExtra("fragmentActivity","text for fragment and activity");
         sendBroadcast(intent);
-        intent.setAction("com.courses.EXAMPLEFragment");
+        intent.setAction(IntentActionConstants.FRAGMENT_INFO_INTENT);
         sendBroadcast(intent);
         stopSelf();
     }
