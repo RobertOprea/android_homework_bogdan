@@ -44,7 +44,7 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/toastButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_text"
@@ -67,6 +67,22 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         />
+
+
+    <Button
+        android:id="@+id/fragmentGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send to fragment"
+        android:layout_below="@+id/colorButton"
+        android:layout_centerHorizontal="true"/>
+
+
+    <FrameLayout
+        android:id="@+id/main_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/toastButton"/>
 
 
 </RelativeLayout>
