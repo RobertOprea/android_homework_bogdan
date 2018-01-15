@@ -17,6 +17,16 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".services.MyService"></service>
+
+        <!--<receiver android:name=".activities.MainActivity$MyReceiver">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.courses.EXAMPLE"></action>-->
+                <!--<action android:name="com.courses.EXAMPLEFragment"></action>-->
+            <!--</intent-filter>-->
+
+        <!--</receiver>-->
+
     </application>
 
 </manifest>
